@@ -17,6 +17,7 @@ return {
           package_uninstalled = "✗",
         },
       },
+      log_level = vim.log.levels.TRACE,
     })
     mason_lspconfig.setup({
       -- list of servers for mason to install
@@ -28,6 +29,7 @@ return {
         "html",    -- HTML LS
         "cssls",   -- CSS LS
         "gopls",   -- GO LS
+        "spectral" -- Openapi LS
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed

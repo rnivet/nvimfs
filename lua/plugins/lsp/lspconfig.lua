@@ -129,5 +129,11 @@ return {
       capabilities = cmp_nvim_lsp.default_capabilities(),
       on_attach = on_attach
     })
+
+    -- configure spectral server
+    lspconfig.spectral.setup({
+      capabilities = cmp_nvim_lsp.default_capabilities(),
+      on_attach = on_attach
+    })
   end,
 }
