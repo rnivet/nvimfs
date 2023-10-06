@@ -3,7 +3,6 @@
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    "lukas-reineke/lsp-format.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "nvimdev/lspsaga.nvim"
   },
@@ -11,9 +10,6 @@ return {
   config = function()
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
-
-    -- import lsp-format plugin
-    local lsp_format = require("lsp-format")
 
     -- import cmp_nvim_lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -29,9 +25,6 @@ return {
 
     local opts = { noremap = true, silent = true }
     local on_attach = function(client, bufnr)
-      -- call lsp-format on_attach
-      lsp_format.on_attach(client, bufnr)
-
       opts.buffer = bufnr
 
       -- set keybinds
@@ -127,6 +120,12 @@ return {
 
     -- configure cssls server
     lspconfig.cssls.setup({
+      capabilities = cmp_nvim_lsp.default_capabilities(),
+      on_attach = on_attach
+    })
+
+    -- configure gopls server
+    lspconfig.gopls.setup({
       capabilities = cmp_nvim_lsp.default_capabilities(),
       on_attach = on_attach
     })
