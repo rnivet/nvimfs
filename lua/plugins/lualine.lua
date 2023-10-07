@@ -4,8 +4,8 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local lualine = require("lualine")
-    local icons = require("nvim-web-devicons").get_icons()
     local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+    local lsp_progress = require("lsp-progress")
 
     local colors = {
       blue = "#65D1FF",
@@ -57,15 +57,13 @@ return {
         theme = my_lualine_theme,
       },
       sections = {
-        lualine_c = {
+        lualine_b = {
           { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
           { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
-          -- stylua: ignore
-          {
-            function() return require("nvim-navic").get_location() end,
-            cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
-          },
+          { "location" },
+          { lsp_progress.progress },
         },
+        lualine_c = {},
         lualine_x = {
           { "diagnostics" },
           {
