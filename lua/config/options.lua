@@ -57,4 +57,4 @@ vim.g.markdown_recommended_style = 0
 -- Use treesitter for folding
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldlevel = 1
+opt.foldlevel = 2

@@ -109,7 +109,7 @@ return {
     -- configure yamlls server
     lspconfig.yamlls.setup({
       capabilities = cmp_nvim_lsp.default_capabilities(),
-      on_attach = on_attach
+      on_attach = on_attach,
     })
 
     -- configure html server
@@ -138,6 +138,18 @@ return {
 
     -- configure ansiblels server
     lspconfig.ansiblels.setup({
+      capabilities = cmp_nvim_lsp.default_capabilities(),
+      on_attach = on_attach
+    })
+
+    -- configure dockerls server
+    lspconfig.dockerls.setup({
+      capabilities = cmp_nvim_lsp.default_capabilities(),
+      on_attach = on_attach
+    })
+
+    -- configure docker_compose_ls server
+    lspconfig.docker_compose_language_service.setup({
       capabilities = cmp_nvim_lsp.default_capabilities(),
       on_attach = on_attach
     })
