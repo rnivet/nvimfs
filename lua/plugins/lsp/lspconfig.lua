@@ -24,7 +24,7 @@ return {
     local keymap = vim.keymap -- for conciseness
 
     local opts = { noremap = true, silent = true }
-    local on_attach = function(client, bufnr)
+    local on_attach = function(_, bufnr)
       opts.buffer = bufnr
 
       -- set keybinds
@@ -132,6 +132,12 @@ return {
 
     -- configure spectral server
     lspconfig.spectral.setup({
+      capabilities = cmp_nvim_lsp.default_capabilities(),
+      on_attach = on_attach
+    })
+
+    -- configure ansiblels server
+    lspconfig.ansiblels.setup({
       capabilities = cmp_nvim_lsp.default_capabilities(),
       on_attach = on_attach
     })
