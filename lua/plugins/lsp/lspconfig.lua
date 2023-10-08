@@ -153,5 +153,11 @@ return {
       capabilities = cmp_nvim_lsp.default_capabilities(),
       on_attach = on_attach
     })
+
+    -- configure phpactor server
+    lspconfig.phpactor.setup({
+      capabilities = cmp_nvim_lsp.default_capabilities(),
+      on_attach = on_attach
+    })
   end,
 }

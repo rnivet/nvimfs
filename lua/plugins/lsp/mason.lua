@@ -33,6 +33,7 @@ return {
         "ansiblels",                       -- Ansible LS
         "dockerls",                        -- Docker LS
         "docker_compose_language_service", -- Docker compose LS
+        "phpactor"                         -- PHP LS
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
