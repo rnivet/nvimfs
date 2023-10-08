@@ -10,10 +10,12 @@ return {
     -- configure treesitter
     treesitter.setup({
       highlight = {
-        enable = true
+        enable = true,
+        additional_vim_regex_highlighting = true,
       },
       indent = {
-        disable = true
+        enable = true,
+        disable = { "yaml" }
       },
       -- ensure these language parsers are installed
       ensure_installed = {
