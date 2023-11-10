@@ -132,6 +132,7 @@ return {
 
     -- configure spectral server
     lspconfig.spectral.setup({
+      filetypes = { "yaml" },
       capabilities = cmp_nvim_lsp.default_capabilities(),
       on_attach = on_attach
     })
@@ -156,6 +157,12 @@ return {
 
     -- configure phpactor server
     lspconfig.phpactor.setup({
+      capabilities = cmp_nvim_lsp.default_capabilities(),
+      on_attach = on_attach
+    })
+
+    -- configure jsonls server
+    lspconfig.jsonls.setup({
       capabilities = cmp_nvim_lsp.default_capabilities(),
       on_attach = on_attach
     })
