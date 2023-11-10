@@ -34,7 +34,8 @@ return {
         "dockerls",                        -- Docker LS
         "docker_compose_language_service", -- Docker compose LS
         "phpactor",                        -- PHP LS
-        "jsonls"                           -- JSON LS
+        "jsonls",                          -- JSON LS
+        "tsserver",                        -- typescript/javascript LS
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed

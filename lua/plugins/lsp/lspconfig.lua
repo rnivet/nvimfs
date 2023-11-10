@@ -166,5 +166,11 @@ return {
       capabilities = cmp_nvim_lsp.default_capabilities(),
       on_attach = on_attach
     })
+
+    -- configure tsserver server
+    lspconfig.tsserver.setup({
+      capabilities = cmp_nvim_lsp.default_capabilities(),
+      on_attach = on_attach
+    })
   end,
 }
