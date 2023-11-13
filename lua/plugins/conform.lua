@@ -9,6 +9,7 @@ return {
       formatters_by_ft = {
         go = { "gofumpt", "goimports_reviser" },
         json = { "fixjson" },
+        html = { "htmlbeautifier" },
       },
       formatters = {
         goimports_reviser = {
