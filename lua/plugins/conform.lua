@@ -10,6 +10,7 @@ return {
         go = { "gofumpt", "goimports_reviser" },
         json = { "fixjson" },
         html = { "htmlbeautifier" },
+        python = { "black" },
       },
       formatters = {
         goimports_reviser = {
