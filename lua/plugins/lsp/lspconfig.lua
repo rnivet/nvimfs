@@ -4,7 +4,8 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
-    "nvimdev/lspsaga.nvim"
+    "nvimdev/lspsaga.nvim",
+    "kevinhwang91/nvim-ufo"
   },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
@@ -74,9 +75,16 @@ return {
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
     end
 
+    -- Add nvim-ufo folding capabilities
+    local capabilities = cmp_nvim_lsp.default_capabilities()
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true
+    }
+
     -- configure lua_ls server
     lspconfig.lua_ls.setup({
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
       on_attach = on_attach,
       settings = {
         Lua = {
@@ -96,80 +104,80 @@ return {
 
     -- configure pylsp server
     lspconfig.pylsp.setup({
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
       on_attach = on_attach
     })
 
     -- configure pyright server
     lspconfig.pyright.setup({
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
       on_attach = on_attach
     })
 
     -- configure yamlls server
     lspconfig.yamlls.setup({
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
       on_attach = on_attach,
     })
 
     -- configure html server
     lspconfig.html.setup({
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
       on_attach = on_attach
     })
 
     -- configure cssls server
     lspconfig.cssls.setup({
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
       on_attach = on_attach
     })
 
     -- configure gopls server
     lspconfig.gopls.setup({
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
       on_attach = on_attach
     })
 
     -- configure spectral server
     lspconfig.spectral.setup({
       filetypes = { "yaml" },
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
       on_attach = on_attach
     })
 
     -- configure ansiblels server
     lspconfig.ansiblels.setup({
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
       on_attach = on_attach
     })
 
     -- configure dockerls server
     lspconfig.dockerls.setup({
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
       on_attach = on_attach
     })
 
     -- configure docker_compose_ls server
     lspconfig.docker_compose_language_service.setup({
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
       on_attach = on_attach
     })
 
     -- configure phpactor server
     lspconfig.phpactor.setup({
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
       on_attach = on_attach
     })
 
     -- configure jsonls server
     lspconfig.jsonls.setup({
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
       on_attach = on_attach
     })
 
     -- configure tsserver server
     lspconfig.tsserver.setup({
-      capabilities = cmp_nvim_lsp.default_capabilities(),
+      capabilities = capabilities,
       on_attach = on_attach
     })
   end,
