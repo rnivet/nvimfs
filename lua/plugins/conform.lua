@@ -8,7 +8,7 @@ return {
     conform.setup({
       formatters_by_ft = {
         go = { "gofumpt", "goimports_reviser" },
-        json = { "fixjson" },
+        -- json = { "fixjson" },
         --html = { "prettier" },
         html = { "htmlbeautifier" },
         python = { "black" },
