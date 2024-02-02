@@ -55,7 +55,7 @@ end
 vim.g.markdown_recommended_style = 0
 
 -- Use ufo for folding
-opt.foldcolumn = '1' -- '0' is not bad
+opt.foldcolumn = '0' -- '0' is not bad
 opt.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
 opt.foldlevelstart = 99
 opt.foldenable = true
