@@ -19,7 +19,10 @@ return {
           command = "goimports-reviser",
           args = { "-project-name", "gitlabdev.vadesecure.com", "$FILENAME" },
           stdin = false,
-        }
+        },
+        black = {
+          prepend_args = { "-l", "79" },
+        },
       },
       format_on_save = {
         lsp_fallback = true,
