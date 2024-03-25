@@ -192,5 +192,11 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
     })
+
+    -- configure csharp server
+    lspconfig.csharp_ls.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
   end,
 }
