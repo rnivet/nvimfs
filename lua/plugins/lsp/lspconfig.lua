@@ -30,7 +30,7 @@ return {
 
       -- set keybinds
       opts.desc = "Show LSP finder"
-      keymap.set("n", "gf", "<cmd>Lspsaga finder <CR>", opts) -- show definition, references
+      keymap.set("n", "gf", "<cmd>Lspsaga finder def+ref+imp<CR>", opts) -- show definition, references
 
       opts.desc = "Show LSP references"
       keymap.set("n", "gR", "<cmd>Lspsaga finder ref<CR>", opts) -- show definition, references
@@ -108,11 +108,11 @@ return {
       on_attach = on_attach
     })
 
-    -- configure pyright server
-    lspconfig.pyright.setup({
-      capabilities = capabilities,
-      on_attach = on_attach
-    })
+    -- -- configure pyright server
+    -- lspconfig.pyright.setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach
+    -- })
 
     -- configure yamlls server
     lspconfig.yamlls.setup({
@@ -134,6 +134,40 @@ return {
 
     -- configure gopls server
     lspconfig.gopls.setup({
+      settings = {
+        gofumpt = true,
+        codelenses = {
+          gc_details = false,
+          generate = true,
+          regenerate_cgo = true,
+          run_govulncheck = true,
+          test = true,
+          tidy = true,
+          upgrade_dependency = true,
+          vendor = true,
+        },
+        hints = {
+          assignVariableTypes = true,
+          compositeLiteralFields = true,
+          compositeLiteralTypes = true,
+          constantValues = true,
+          functionTypeParameters = true,
+          parameterNames = true,
+          rangeVariableTypes = true,
+        },
+        analyses = {
+          fieldalignment = true,
+          nilness = true,
+          unusedparams = true,
+          unusedwrite = true,
+          useany = true,
+        },
+        usePlaceholders = true,
+        completeUnimported = true,
+        staticcheck = true,
+        directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+        semanticTokens = true,
+      },
       capabilities = capabilities,
       on_attach = on_attach
     })
