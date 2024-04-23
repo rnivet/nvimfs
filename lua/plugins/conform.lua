@@ -21,7 +21,7 @@ return {
           stdin = false,
         },
         black = {
-          prepend_args = { "-l", "79" },
+          prepend_args = { "-l", "80" },
         },
       },
       format_on_save = {
