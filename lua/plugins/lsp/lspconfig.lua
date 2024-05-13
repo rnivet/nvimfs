@@ -103,16 +103,16 @@ return {
     })
 
     -- configure pylsp server
-    lspconfig.pylsp.setup({
-      capabilities = capabilities,
-      on_attach = on_attach
-    })
-
-    -- -- configure pyright server
-    -- lspconfig.pyright.setup({
+    -- lspconfig.pylsp.setup({
     --   capabilities = capabilities,
     --   on_attach = on_attach
     -- })
+
+    -- configure pyright server
+    lspconfig.pyright.setup({
+      capabilities = capabilities,
+      on_attach = on_attach
+    })
 
     -- configure yamlls server
     lspconfig.yamlls.setup({
