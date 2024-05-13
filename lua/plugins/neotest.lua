@@ -16,8 +16,8 @@ return {
         require("neotest-python"),
       }
     })
-    vim.keymap.set("n", "to", "<cmd>Neotest summary<CR>",
-      { desc = "Show tests outline", noremap = true, silent = true })
+    vim.keymap.set("n", "to", "<cmd>Neotest output<CR>",
+      { desc = "Show tests output", noremap = true, silent = true })
     vim.keymap.set("n", "tr", "<cmd>Neotest run<CR>",
       { desc = "Run tests", noremap = true, silent = true })
   end
