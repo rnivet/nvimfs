@@ -20,9 +20,6 @@ return {
           args = { "-project-name", "gitlabdev.vadesecure.com", "$FILENAME" },
           stdin = false,
         },
-        black = {
-          prepend_args = { "-l", "80" },
-        },
       },
       format_on_save = {
         lsp_fallback = true,

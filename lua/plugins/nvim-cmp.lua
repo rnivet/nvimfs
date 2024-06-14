@@ -49,7 +49,10 @@ return {
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
         ["<C-e>"] = cmp.mapping.abort(),        -- close completion window
-        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+        ["<CR>"] = cmp.mapping.confirm({
+          select = false,
+          behavior = cmp.ConfirmBehavior.Insert
+        }),
         -- super tab mapping for snippets
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
