@@ -5,7 +5,8 @@ return {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "nvimdev/lspsaga.nvim",
-    "kevinhwang91/nvim-ufo"
+    "kevinhwang91/nvim-ufo",
+    "Hoffs/omnisharp-extended-lsp.nvim"
   },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
@@ -209,8 +210,8 @@ return {
       on_attach = on_attach
     })
 
-    -- configure tsserver server
-    lspconfig.tsserver.setup({
+    -- configure ts_ls server
+    lspconfig.ts_ls.setup({
       capabilities = capabilities,
       on_attach = on_attach
     })
@@ -227,8 +228,66 @@ return {
       on_attach = on_attach,
     })
 
-    -- configure csharp server
-    lspconfig.csharp_ls.setup({
+    -- -- configure csharp server
+    -- local csharpls_extended = require("csharpls_extended")
+    -- -- csharpls_extended.setup()
+    -- lspconfig.csharp_ls.setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    --   handlers = {
+    --     ["textDocument/definition"] = csharpls_extended.definition_handler,
+    --     ["textDocument/typeDefinition"] = csharpls_extended.handler,
+    --   },
+    -- })
+
+    -- configure omnisharp server
+    lspconfig.omnisharp.setup({
+      cmd = { "omnisharp" },
+      settings = {
+        FormattingOptions = {
+          -- Enables support for reading code style, naming convention and analyzer
+          -- settings from .editorconfig.
+          EnableEditorConfigSupport = true,
+          -- Specifies whether 'using' directives should be grouped and sorted during
+          -- document formatting.
+          OrganizeImports = nil,
+        },
+        MsBuild = {
+          -- If true, MSBuild project system will only load projects for files that
+          -- were opened in the editor. This setting is useful for big C# codebases
+          -- and allows for faster initialization of code navigation features only
+          -- for projects that are relevant to code that is being edited. With this
+          -- setting enabled OmniSharp may load fewer projects and may thus display
+          -- incomplete reference lists for symbols.
+          LoadProjectsOnDemand = true,
+        },
+        RoslynExtensionsOptions = {
+          -- Enables support for roslyn analyzers, code fixes and rulesets.
+          EnableAnalyzersSupport = true,
+          -- Enables support for showing unimported types and unimported extension
+          -- methods in completion lists. When committed, the appropriate using
+          -- directive will be added at the top of the current file. This option can
+          -- have a negative impact on initial completion responsiveness,
+          -- particularly for the first few completion sessions after opening a
+          -- solution.
+          EnableImportCompletion = true,
+          -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
+          -- true
+          AnalyzeOpenDocumentsOnly = true,
+          EnableDecompilationSupport = true,
+        },
+        Sdk = {
+          -- Specifies whether to include preview versions of the .NET SDK when
+          -- determining which version to use for project loading.
+          IncludePrereleases = true,
+        },
+      },
+      handlers = {
+        ["textDocument/definition"] = require('omnisharp_extended').definition_handler,
+        ["textDocument/typeDefinition"] = require('omnisharp_extended').type_definition_handler,
+        ["textDocument/references"] = require('omnisharp_extended').references_handler,
+        ["textDocument/implementation"] = require('omnisharp_extended').implementation_handler,
+      },
       capabilities = capabilities,
       on_attach = on_attach,
     })

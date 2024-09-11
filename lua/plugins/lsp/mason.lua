@@ -35,10 +35,11 @@ return {
         "docker_compose_language_service", -- Docker compose LS
         "phpactor",                        -- PHP LS
         "jsonls",                          -- JSON LS
-        "tsserver",                        -- typescript/javascript LS
+        "ts_ls",                           -- typescript/javascript LS
         "bashls",                          -- Bash LS
         "docker_compose_language_service", -- Docker compose LS
         "csharp_ls",                       -- C# LS
+        "omnisharp",                       -- Another C# LS
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
